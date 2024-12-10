@@ -102,14 +102,13 @@ def save_npz(data_path, res=128):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument("--data_folder", type=str, default="/home/junfeng/Documents/GaussianAvatar/gs_data/data")
-    parser.add_argument("--subject", type=str, required=True)
+    parser.add_argument("--data_root", type=str, required=True)
     parser.add_argument("--set", type=str, nargs="+", default=["train", "test"])
     args = parser.parse_args()
-    
+
     for set in args.set:
-        smplx_parm_path = join(args.data_folder, args.subject, set) # path to the folder that include smpl params
-        parms_name = "smpl_parms.pth"
+        smplx_parm_path = join(args.data_root, set)  # path to the folder that include smpl params
+        parms_name = "smpl_parms.pth"   
         uv_template_fn = "../assets/template_mesh_smpl_uv.obj"
         assets_path = "/home/junfeng/Documents/GaussianAvatar/assets"  # path to the folder that include 'assets'
 

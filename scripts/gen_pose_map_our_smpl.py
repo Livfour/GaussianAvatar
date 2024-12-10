@@ -3,6 +3,7 @@
 import numpy  as np
 import torch
 from os.path import join
+from argparse import ArgumentParser
 import os
 import sys
 sys.path.append('../')
@@ -113,9 +114,17 @@ def save_npz(data_path, res=128):
 
 
 if __name__ == '__main__':
-    smpl_parm_path = 'path to you data folder'
-    parms_name = 'smpl_parms.pth'
-    uv_template_fn = '../assets/template_mesh_smpl_uv.obj' # smplx/smpl
+    parser = ArgumentParser()
+    parser.add_argument('--data_folder', type=str, default='/home/junfeng/Documents/GaussianAvatar/assets/gs_data/data')
+    parser.add_argument('--subject', type=str, required=True)
+    parser.add_argument('--set', type=str, default='train')
+    parser.add_argument('--parms_name', type=str, default='smpl_parms.pth')
+    parser.add_argument('--uv_template_fn', type=str, default='../assets/template_mesh_smpl_uv.obj') # smplx/smpl
+    args = parser.parse_args()
+
+    smpl_parm_path = join(args.data_folder, args.subject, args.set)
+    parms_name = args.parms_name
+    uv_template_fn = args.uv_template_fn
 
     print('saving obj...')
     save_obj(smpl_parm_path, parms_name)
