@@ -48,7 +48,7 @@ def load_smpl_param(path, data_list, return_thata=True):
 # test_list = 446:647:4]
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument('--data_folder', type=str, default='/home/junfeng/Documents/GaussianAvatar/gs_data/data')
+    parser.add_argument('--data_folder', type=str, default='')
     parser.add_argument('--subject', type=str, required=True)
     parser.add_argument('--custom', action='store_true', default=True)
     args = parser.parse_args()

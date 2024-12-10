@@ -115,7 +115,7 @@ def save_npz(data_path, res=128):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('--data_folder', type=str, default='/home/junfeng/Documents/GaussianAvatar/assets/gs_data/data')
+    parser.add_argument('--data_folder', type=str, default='')
     parser.add_argument('--subject', type=str, required=True)
     parser.add_argument('--set', type=str, default='train')
     parser.add_argument('--parms_name', type=str, default='smpl_parms.pth')

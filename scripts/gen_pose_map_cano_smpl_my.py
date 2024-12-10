@@ -110,7 +110,7 @@ if __name__ == '__main__':
         smplx_parm_path = join(args.data_root, set)  # path to the folder that include smpl params
         parms_name = "smpl_parms.pth"   
         uv_template_fn = "../assets/template_mesh_smpl_uv.obj"
-        assets_path = "/home/junfeng/Documents/GaussianAvatar/assets"  # path to the folder that include 'assets'
+        assets_path = "../assets"  # path to the folder that include 'assets'
 
         print("saving obj...")
         save_obj(smplx_parm_path, parms_name)
