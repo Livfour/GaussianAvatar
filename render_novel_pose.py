@@ -27,7 +27,7 @@ def render_sets(model, net, opt, epoch:int):
             batch_data = to_cuda(batch_data, device=torch.device('cuda:0'))
 
             if model.train_stage ==1:
-                image, = avatarmodel.render_free_stage1(batch_data, 59400)
+                image, = avatarmodel.render_free_stage1(batch_data=batch_data, iteration=59400, epoch=epoch, frame_idx=idx, run_id="smoothed_pose")
             else:
                 image, = avatarmodel.render_free_stage2(batch_data, 59400)
 

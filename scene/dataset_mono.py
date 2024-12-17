@@ -458,9 +458,13 @@ class MonoDataset_novel_pose(Dataset):
             cam_npy = np.load(cam_path)
             extr_npy = cam_npy['extrinsic']
             intr_npy = cam_npy['intrinsic']
+            image_width = cam_npy['image_width']
+            image_height = cam_npy['image_height']
             self.R = np.array(extr_npy[:3, :3], np.float32).reshape(3, 3).transpose(1, 0)
             self.T = np.array([extr_npy[:3, 3]], np.float32)
             self.intrinsic = np.array(intr_npy, np.float32).reshape(3, 3)
+            self.image_width = image_width
+            self.image_height = image_height
         
 
         
@@ -489,7 +493,7 @@ class MonoDataset_novel_pose(Dataset):
         transl_data = self.transl_data[pose_idx]
 
 
-        width, height = 1024, 1024
+        width, height = self.image_width, self.image_height
 
         FovY = focal2fov(focal_length_y, height)
         FovX = focal2fov(focal_length_x, width)

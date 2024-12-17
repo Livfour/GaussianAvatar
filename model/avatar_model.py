@@ -534,6 +534,7 @@ class AvatarModel:
             params_save_path = os.path.join(
                 self.model_path, "test_free", f"gs_params_{epoch}_{run_id}", f"{frame_idx:04d}.pth"
             )
+            os.makedirs(os.path.dirname(params_save_path), exist_ok=True)
             rendered_images.append(
                 render_batch(
                     points=points,
